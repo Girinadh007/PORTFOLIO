@@ -398,7 +398,7 @@ export default function App() {
       </div>
 
       {/* ── FOOTER ── */}
-      <footer className="footer">
+      <footer id="contact" className="footer">
         <p className="footer-label">CONTACT</p>
         <div className="footer-links">
           <a href="https://github.com/Girinadh007" target="_blank" rel="noreferrer" title="GitHub"><GithubIcon /></a>
