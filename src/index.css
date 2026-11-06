@@ -1,66 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg: #050A1F;
-  --bg-secondary: #0A122E;
-  --text: #cbd5e1;
-  --text-h: #ffffff;
-  --accent: #b4ff00;
-  --accent-hover: #ccff33;
-  --accent-transparent: rgba(180, 255, 0, 0.12);
-  --accent-border: rgba(180, 255, 0, 0.3);
-  --sans: 'Inter', system-ui, sans-serif;
-  --heading: 'Outfit', system-ui, sans-serif;
-  --radius: 16px;
-  --glass-bg: rgba(10, 18, 46, 0.45);
-  --glass-border: rgba(255, 255, 255, 0.07);
+  --bg-deep: #050507;
+  --bg-card: rgba(14, 15, 20, 0.78);
+  --bg-card-hover: rgba(22, 24, 34, 0.92);
+  --border-dim: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(255, 51, 68, 0.5);
+  --border-cyan: rgba(0, 240, 255, 0.4);
+
+  --accent-red: #ff3344;
+  --accent-red-glow: rgba(255, 51, 68, 0.35);
+  --accent-cyan: #00f0ff;
+  --accent-cyan-glow: rgba(0, 240, 255, 0.25);
+  --accent-green: #00ff88;
+  --accent-yellow: #ffb800;
+
+  --text-main: #e2e8f0;
+  --text-dim: #94a3b8;
+  --text-sub: #64748b;
+  --text-bright: #ffffff;
+
+  --font-display: 'Chakra Petch', system-ui, sans-serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+}
 
-body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
+body.hud-body {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-body);
   overflow-x: hidden;
-  cursor: auto;
-  line-height: 1.6;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--heading);
-  color: var(--text-h);
-  line-height: 1.15;
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: #1f222e;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-red);
 }
 
-a { color: var(--accent); text-decoration: none; transition: all 0.25s ease; cursor: pointer; }
-button { cursor: pointer; }
-
-/* ── Grid Background ── */
-.bg-grid {
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background-image:
-    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  z-index: -1; pointer-events: none;
+/* Monospace utility */
+.font-mono {
+  font-family: var(--font-mono);
 }
 
-/* ── Progress Bar ── */
-.progress-bar {
-  position: fixed; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--accent); transform-origin: 0%;
-  z-index: 9999;
-  box-shadow: 0 0 12px var(--accent);
+/* Colors */
+.red-text { color: var(--accent-red); }
+.cyan-text { color: var(--accent-cyan); }
+.green-text { color: var(--accent-green); }
+.white-text { color: var(--text-bright); }
+
+/* Blinking dot */
+.dot {
+  display: inline-block;
+  margin-right: 6px;
+  font-size: 0.75rem;
+}
+.red-pulse {
+  color: var(--accent-red);
+  text-shadow: 0 0 8px var(--accent-red);
+  animation: pulse 1.6s infinite ease-in-out;
+}
+.green-pulse {
+  color: var(--accent-green);
+  text-shadow: 0 0 8px var(--accent-green);
+  animation: pulse 1.6s infinite ease-in-out;
 }
 
-/* ── Glass Panel ── */
-.glass-panel {
-  background: var(--glass-bg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius);
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.9); }
 }
