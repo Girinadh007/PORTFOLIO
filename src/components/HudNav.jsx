@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
-import { sound } from '../utils/audio';
 
 export default function HudNav({ activeSection, onToggleTerminal, onReplayBoot }) {
   const [time, setTime] = useState('');
-  const [audioActive, setAudioActive] = useState(true);
 
   useEffect(() => {
     const updateTime = () => {
@@ -34,12 +32,6 @@ export default function HudNav({ activeSection, onToggleTerminal, onReplayBoot }
     return () => clearInterval(timer);
   }, []);
 
-  const toggleAudio = () => {
-    const state = sound.toggle();
-    setAudioActive(state);
-    if (state) sound.playClick();
-  };
-
   const navItems = [
     { id: 'hero', index: '00 //', label: 'INTRO' },
     { id: 'about', index: '01 //', label: 'ABOUT' },
@@ -68,22 +60,13 @@ export default function HudNav({ activeSection, onToggleTerminal, onReplayBoot }
           <button
             className="ticker-btn"
             onClick={onReplayBoot}
-            onMouseEnter={() => sound.playHover()}
             title="Re-run boot diagnostics"
           >
             [ REPLAY BOOT ]
           </button>
           <button
-            className={`ticker-btn ${audioActive ? 'audio-active' : ''}`}
-            onClick={toggleAudio}
-            onMouseEnter={() => sound.playHover()}
-          >
-            {audioActive ? '🔊 AUDIO: ON' : '🔇 AUDIO: OFF'}
-          </button>
-          <button
             className="ticker-btn"
             onClick={onToggleTerminal}
-            onMouseEnter={() => sound.playHover()}
           >
             [ &gt;_ CLI ]
           </button>
@@ -93,7 +76,7 @@ export default function HudNav({ activeSection, onToggleTerminal, onReplayBoot }
       {/* Main Navigation Bar */}
       <nav className="hud-navbar">
         <div className="hud-brand">
-          <a href="#hero" onClick={() => sound.playClick()} className="hud-brand-link">
+          <a href="#hero" className="hud-brand-link">
             <span className="brand-bracket">[</span>
             <span className="brand-prefix">GIRINADH</span>
             <span className="brand-dot">.</span>
@@ -113,8 +96,6 @@ export default function HudNav({ activeSection, onToggleTerminal, onReplayBoot }
                 <a
                   href={`#${item.id}`}
                   className={`hud-nav-link-stacked ${isActive ? 'active' : ''}`}
-                  onMouseEnter={() => sound.playHover()}
-                  onClick={() => sound.playClick()}
                 >
                   <span className="nav-index font-mono">{item.index}</span>
                   <span className="nav-label font-mono">{item.label}</span>
@@ -128,8 +109,6 @@ export default function HudNav({ activeSection, onToggleTerminal, onReplayBoot }
           <a
             href="#contact"
             className="hud-dispatch-btn-stacked"
-            onMouseEnter={() => sound.playHover()}
-            onClick={() => sound.playClick()}
           >
             <div className="dispatch-text-col font-mono">
               <span className="dispatch-top">INITIATE</span>

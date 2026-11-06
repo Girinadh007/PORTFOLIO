@@ -6,7 +6,6 @@ import SystemsMatrix from './components/SystemsMatrix';
 import CredentialsSection from './components/CredentialsSection';
 import CyberTerminal from './components/CyberTerminal';
 import CustomCursor from './components/CustomCursor';
-import { sound } from './utils/audio';
 import './App.css';
 
 /* ── Social Icons ── */
@@ -98,11 +97,9 @@ export default function App() {
       <HudNav
         activeSection={activeSection}
         onToggleTerminal={() => {
-          sound.playClick();
           setShowTerminal((prev) => !prev);
         }}
         onReplayBoot={() => {
-          sound.playConfirm();
           setBootCompleted(false);
         }}
       />
@@ -145,16 +142,12 @@ export default function App() {
               <a
                 href="#contact"
                 className="hud-action-btn primary"
-                onMouseEnter={() => sound.playHover()}
-                onClick={() => sound.playClick()}
               >
                 [ INITIATE DISPATCH ]
               </a>
               <a
                 href="#flagships"
                 className="hud-action-btn outline"
-                onMouseEnter={() => sound.playHover()}
-                onClick={() => sound.playClick()}
               >
                 [ EXPLORE ARCHITECTURE ]
               </a>
@@ -164,7 +157,6 @@ export default function App() {
                   sound.playClick();
                   setShowTerminal(true);
                 }}
-                onMouseEnter={() => sound.playHover()}
               >
                 &gt;_ OPEN CLI
               </button>
@@ -479,7 +471,6 @@ export default function App() {
                 <a
                   href="mailto:pedapudigirinadh@gmail.com"
                   className="addr-email"
-                  onMouseEnter={() => sound.playHover()}
                 >
                   pedapudigirinadh@gmail.com
                 </a>
@@ -489,8 +480,6 @@ export default function App() {
                 <a
                   href="mailto:pedapudigirinadh@gmail.com"
                   className="hud-action-btn primary large"
-                  onMouseEnter={() => sound.playHover()}
-                  onClick={() => sound.playClick()}
                 >
                   <MailIcon /> [ INITIATE TRANSMISSION ]
                 </a>
@@ -499,8 +488,6 @@ export default function App() {
                   target="_blank"
                   rel="noreferrer"
                   className="hud-action-btn outline large"
-                  onMouseEnter={() => sound.playHover()}
-                  onClick={() => sound.playClick()}
                 >
                   <GithubIcon /> GITHUB: Girinadh007
                 </a>
@@ -509,8 +496,6 @@ export default function App() {
                   target="_blank"
                   rel="noreferrer"
                   className="hud-action-btn outline large"
-                  onMouseEnter={() => sound.playHover()}
-                  onClick={() => sound.playClick()}
                 >
                   <LinkedinIcon /> LINKEDIN
                 </a>
@@ -525,7 +510,6 @@ export default function App() {
                     sound.playClick();
                     setShowTerminal(true);
                   }}
-                  onMouseEnter={() => sound.playHover()}
                 >
                   PRESS [`] OR CLICK HERE FOR SECURE SHELL &gt;_
                 </button>
@@ -556,7 +540,6 @@ export default function App() {
               rel="noreferrer"
               className="footer-social-link"
               title="GitHub"
-              onMouseEnter={() => sound.playHover()}
             >
               <GithubIcon />
             </a>
@@ -566,7 +549,6 @@ export default function App() {
               rel="noreferrer"
               className="footer-social-link"
               title="LinkedIn"
-              onMouseEnter={() => sound.playHover()}
             >
               <LinkedinIcon />
             </a>
@@ -574,7 +556,6 @@ export default function App() {
               href="mailto:pedapudigirinadh@gmail.com"
               className="footer-social-link"
               title="Email"
-              onMouseEnter={() => sound.playHover()}
             >
               <MailIcon />
             </a>
